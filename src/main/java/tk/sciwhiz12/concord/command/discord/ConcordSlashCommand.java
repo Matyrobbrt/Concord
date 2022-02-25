@@ -50,9 +50,17 @@ public abstract class ConcordSlashCommand extends SlashCommand {
             event.deferReply(true).setContent("This command is disabled!").queue();
             return;
         }
+        if (this.requiresDiscordLinking() && !bot.isUserLinked(event.getUser())) {
+            event.deferReply(true).setContent("This command requires your Minecraft account to be linked with your Discord Account!").queue();
+        }
         execute0(event);
     }
 
+    @SuppressWarnings("static-method")
+    protected boolean requiresDiscordLinking() {
+        return false;
+    }
+    
     protected abstract void execute0(SlashCommandEvent event);
 
 }
