@@ -65,6 +65,7 @@ import net.minecraftforge.common.MinecraftForge;
 import tk.sciwhiz12.concord.command.discord.LinkDiscordCommand;
 import tk.sciwhiz12.concord.command.discord.PlayersDiscordCommand;
 import tk.sciwhiz12.concord.command.discord.WhisperDiscordCommand;
+import tk.sciwhiz12.concord.command.discord.moderation.KickDiscordCommand;
 import tk.sciwhiz12.concord.msg.MessageListener;
 import tk.sciwhiz12.concord.msg.Messaging;
 import tk.sciwhiz12.concord.msg.PlayerListener;
@@ -106,7 +107,8 @@ public final class ChatBot extends ListenerAdapter {
                 .addSlashCommands(
                     new WhisperDiscordCommand(this),
                     new PlayersDiscordCommand(this),
-                    new LinkDiscordCommand(this)
+                    new LinkDiscordCommand(this),
+                    new KickDiscordCommand(this)
                  )
                 .build();
         discord.addEventListener(commandClient);
